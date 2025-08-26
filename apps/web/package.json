@@ -1,0 +1,53 @@
+{
+  "name": "@poody/web",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20.10.0"
+  },
+  "scripts": {
+    "dev": "remix dev",
+    "dev:local": "HOST=0.0.0.0 PORT=3000 USE_MOCKS=true remix dev",
+    "build": "remix build",
+    "start": "remix-serve ./build/index.js",
+    "preview": "remix-serve ./build/index.js",
+    "lint": "eslint --max-warnings=0 --cache .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "e2e": "playwright test",
+    "prepare": "tailwindcss -i ./app/styles/tailwind.css -o ./app/styles/_out.css --watch --postcss"
+  },
+  "dependencies": {
+    "@remix-run/node": "^2.13.1",
+    "@remix-run/react": "^2.13.1",
+    "@remix-run/serve": "^2.13.1",
+    "@shopify/hydrogen": "^2024.7.1",
+    "@shopify/remix-oxygen": "^2.3.0",
+    "@poody/ui": "workspace:*",
+    "@poody/games": "workspace:*",
+    "@poody/config": "workspace:*",
+    "clsx": "^2.1.1",
+    "framer-motion": "^11.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@remix-run/dev": "^2.13.1",
+    "@types/node": "^22.17.2",
+    "@types/react": "^18.3.8",
+    "@types/react-dom": "^18.3.0",
+    "@axe-core/playwright": "^4.10.0",
+    "@playwright/test": "^1.55.0",
+    "@lhci/cli": "^0.13.0",
+    "msw": "^2.6.6",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.34.0",
+    "eslint-plugin-react": "^7.37.2",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.14",
+    "typescript": "~5.9.2",
+    "vite": "^5.4.10",
+    "vitest": "^3.2.4",
+    "playwright": "^1.55.0"
+  }
+}

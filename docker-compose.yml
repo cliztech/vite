@@ -1,0 +1,18 @@
+version: "3.9"
+services:
+  web:
+    image: node:20
+    working_dir: /workspace
+    environment:
+      - USE_MOCKS=true
+      - NODE_ENV=development
+      - HOST=0.0.0.0
+      - PORT=3000
+    ports:
+      - "3000:3000" # Remix dev / preview server
+    volumes:
+      - ./:/workspace
+      - pnpm-store:/root/.local/share/pnpm/store
+    command: bash -lc "corepack enable && corepack prepare pnpm@10.15.0 --activate && pnpm install --filter @poody/config --filter @poody/ui --filter @poody/games --filter @poody/web --frozen-lockfile=false && cd apps/web && pnpm dev:local"
+volumes:
+  pnpm-store:

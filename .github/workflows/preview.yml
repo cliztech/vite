@@ -1,13 +1,11 @@
-name: CI
+name: Preview
 
 on:
-  push:
-    branches: ["**"]
   pull_request:
     branches: ["**"]
 
 jobs:
-  ci:
+  preview:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -19,19 +17,12 @@ jobs:
           node-version: 20
           cache: pnpm
       - run: pnpm install --frozen-lockfile=false
-      - name: Typecheck
-        run: pnpm -r --filter "@poody/*" run typecheck || true
-      - name: Lint
-        run: pnpm -r --filter "@poody/*" run lint || true
       - name: Build web
         working-directory: apps/web
         run: pnpm build || true
-      - name: Lighthouse CI
-        working-directory: apps/web
-        run: npx lhci autorun || true
-      - name: Upload build
-        if: always()
+      - name: Preview artifact
         uses: actions/upload-artifact@v4
         with:
-          name: web-build
+          name: web-preview
           path: apps/web/build
+

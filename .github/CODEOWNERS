@@ -1,0 +1,8 @@
+# Core ownership for Poody Toons areas
+apps/web/ @owner @frontend
+packages/ui/ @frontend @qa
+packages/games/ @games @qa
+packages/config/ @devex
+.github/ @repo
+docs/ @producer
+

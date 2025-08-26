@@ -1,0 +1,13 @@
+{
+  "name": "@poody/config",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "main": "./index.js",
+  "exports": {
+    "./tsconfig/base.json": "./tsconfig/base.json",
+    "./tailwind-config": "./tailwind-config/index.ts",
+    "./eslint": "./eslint/index.cjs"
+  }
+}
+
